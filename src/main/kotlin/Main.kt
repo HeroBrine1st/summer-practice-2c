@@ -7,10 +7,15 @@ class Singleton private constructor() {
     }
     
     fun helloWorld() {
-        println("Hello World!")
+        println("Hello World from $this!") // outputs a hashcode to verify it is the same instance of this class
+    }
+
+    fun helloUser() {
+        println("Hello User from $this!")
     }
 }
 
 fun main() {
     Singleton.INSTANCE.helloWorld()
+    Singleton.INSTANCE.helloUser()
 }
