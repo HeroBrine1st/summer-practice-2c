@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.23"
-    application
+    id("org.jetbrains.compose") version "1.6.2"
 }
 
 group = "ru.herobrine1st.practice"
@@ -8,18 +8,21 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    google()
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    implementation(compose.runtime)
+    implementation(compose.foundation)
+    implementation(compose.material3)
+    implementation(compose.ui)
+    implementation(compose.desktop.currentOs)
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
-
-application {
-    mainClass = "ru.herobrine1st.practice.MainKt"
+compose.desktop {
+    application {
+        mainClass = "ru.herobrine1st.practice.MainKt"
+    }
 }
 
 kotlin {

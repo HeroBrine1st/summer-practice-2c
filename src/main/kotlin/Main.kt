@@ -1,21 +1,23 @@
 package ru.herobrine1st.practice
 
-class Singleton private constructor() {
-    companion object {
-        @JvmStatic
-        val INSTANCE by lazy { Singleton() }
-    }
-    
-    fun helloWorld() {
-        println("Hello World from $this!") // outputs a hashcode to verify it is the same instance of this class
-    }
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.application
 
-    fun helloUser() {
-        println("Hello User from $this!")
+@Composable
+fun MainScreen() {
+    Column {
+        Button(onClick = { println("test") }) {
+            Text("Test")
+        }
     }
 }
 
-fun main() {
-    Singleton.INSTANCE.helloWorld()
-    Singleton.INSTANCE.helloUser()
+fun main() = application {
+    Window(onCloseRequest = ::exitApplication) {
+        MainScreen()
+    }
 }
