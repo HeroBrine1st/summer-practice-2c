@@ -1,21 +1,17 @@
 package ru.herobrine1st.practice
 
-class Singleton private constructor() {
-    companion object {
-        @JvmStatic
-        val INSTANCE by lazy { Singleton() }
-    }
-    
-    fun helloWorld() {
-        println("Hello World from $this!") // outputs a hashcode to verify it is the same instance of this class
-    }
+import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.application
+import ru.herobrine1st.practice.ui.MainScreen
 
-    fun helloUser() {
-        println("Hello User from $this!")
-    }
-}
+/**
+ * Пусть класс-синглтон предоставляет 2 коэффициента для расчета страховой премии за конкретный вид страхования: автомобиль и недвижимость.
+ * Вместе с ним есть 3 класса-калькулятора: ОСАГО, КАСКО и страхование квартиры. Классы-калькуляторы определяют формулу расчета, используя коэффициенты из класса-синглтона.
+ * Формулы придумать самостоятельно.
+ */
 
-fun main() {
-    Singleton.INSTANCE.helloWorld()
-    Singleton.INSTANCE.helloUser()
+fun main() = application {
+    Window(onCloseRequest = ::exitApplication) {
+        MainScreen()
+    }
 }
